@@ -1,0 +1,102 @@
+//kardemaskin
+//todo: akselspiker, krank, sveiv, handtak,bein.
+
+translate([50,0,0])storrulle();
+translate([-50,0,0])litarulle();
+
+tannhjulstort();
+tannhjullite();
+drivtannhjul();
+translate([-17,60,-61])spikrer();
+translate([50,0,-61])spikrer();
+translate([-50,0,-61])spikrer();
+translate([-50,0,0])
+rotate([180,0,60])
+translate([0,0,-61])spikrer();
+translate([50,0,0])
+rotate([180,0,60])
+translate([0,0,-61])spikrer();
+translate([-17,60,0])
+rotate([180,0,60])
+translate([0,0,-61])spikrer();
+vang();
+mirror([0,0,1])vang();
+module vang(){
+translate([0,0,63])
+hull(){
+translate([-17,60,0])cylinder(10,40,36,center=false);
+translate([50,0,0])cylinder(10,20,16,center=false);
+translate([-50,0,0])cylinder(10,20,16,center=false);
+}
+}
+module spikrer(){
+for(i=[0:120:359])rotate([0,0,i])
+translate([10,0,0])spiker();
+}
+
+module spiker(){
+color("red")cylinder(4,5,5,center=false);
+translate([0,0,50])cube([5,5,100],center=true);
+}
+module drivtannhjul(){
+for(i=[-1:2:1])
+translate([-17,60,55*i-5])tannhjul(12);
+
+translate([-17,60,0])cylinder(98,20,20,center=true);
+}
+
+module tannhjulstort(){
+for(i=[-1:2:1])
+translate([50,0,55*i-5])tannhjul(22);
+}
+
+module tannhjullite(){
+for(i=[-1:2:1])
+translate([-50,0,55*i-5])tannhjul(12);
+}
+
+module tannhjul(tann){
+for(i=[0:360/tann:359])
+rotate([0,0,i])tann(tann+5);
+difference(){
+cylinder(10,tann*2+3,tann*2+3,center=false);
+cylinder(10,1.5,1.5,center=false);
+}
+}
+
+module tann(dia){
+translate([0,dia,0])linear_extrude(10)
+polygon([[5,dia/2],[10,dia-5],[5,dia-5],[2.5,dia+5],[-2.5,dia+5],[-5,dia-5],[-10,dia-5],[-5,dia/2]]);
+}
+
+module storrulle(){
+difference(){
+cylinder(98,40,40,center=true);
+cylinder(199,2,2,center=true);
+}
+for(i=[-48:6:49])
+for(j=[0:5:360])
+ rotate([0,0,j])
+ translate([0,50,i])
+ cube([2,20,1],center=true);
+ difference(){
+ cylinder(98,60.5,60.5,center=true);
+ cylinder(98,60,60,center=true);
+ }
+ }
+ 
+ module litarulle(){
+ difference(){
+cylinder(98,30,30,center=true);
+cylinder(98,2,2,center=true);
+}
+for(i=[-48:6:49])
+for(j=[0:5:360])
+ rotate([0,0,j])
+ translate([0,40,i])
+ cube([2,20,1],center=true);
+ difference(){
+ cylinder(98,50.5,50.5,center=true);
+ cylinder(98,50,50,center=true);
+ }
+ }
