@@ -1,5 +1,4 @@
 //kardemaskin
-//todo: akselspiker, krank,lager, sveiv, handtak,bein.
 
 //translate([50,0,0])storrulle();
 //translate([-50,0,0])litarulle();
