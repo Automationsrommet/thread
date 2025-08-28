@@ -1,18 +1,23 @@
-//kniv();
-//flaske();
-//guide();
-//stav();
+//Prinede deler
+
 snelle();
 drivtannhjul();
 snelletannhjul();
 sidevang();
 bakvang();
-handtak();
 sokkel();
 arm();
 sveiv();
-skruer();
 justering();
+guide();
+
+//Til montering: skruer, spiker, skiver
+
+//Kulisser
+
+//kniv();
+//flaske();
+//stav();
 
 module justeringplass(){
 translate([0,-13,-36.5])
@@ -111,7 +116,6 @@ rotate([30,0,0])
 translate([0,0,-100])
 resize([44,20,25])
 sphere(20,$fn=12);
-
 translate([76,100,95])
 rotate([30,0,0])
 translate([0,0,-100])
@@ -123,7 +127,6 @@ translate([102,140,0])cube(40,center=true);
 }
 
 module sidevang(){
-
 difference(){
 minkowski(){
 union(){
@@ -142,8 +145,8 @@ cylinder(90,2,2,center=true);
 translate([45,100,95])
 rotate([0,90,0])
 cylinder(90,15,15,center=true,$fn=100);
+skruer();
 }
-
 }
 
 module bakvang(){
@@ -165,8 +168,8 @@ cylinder(90,2,2,center=true);
 translate([-45,100,95])
 rotate([0,90,0])
 cylinder(90,2,2,center=true);
+skruer();
 }
-
 }
 
 module sokkel(){
@@ -209,11 +212,8 @@ sidevang();
 sphere(0.5);
 }
 justeringplass();
+skruer();
 }
-}
-
-module handtak(){
-
 }
 
 module snelletannhjul(){
@@ -247,10 +247,7 @@ for(j=[0:120:359])
 rotate([0,0,j])
 translate([00,10,0])
 skrue();
-//cylinder(90,2,2,center=true);
 }
-
-
 translate([45,100,95])
 intersection(){
 rotate([0,90,0])
@@ -283,7 +280,6 @@ translate([20,0,40])cube([12,300
 translate([-20,0,40])cube([12,300
 ,3],center=true);
 }
-
 }
 
 module kniv(){
