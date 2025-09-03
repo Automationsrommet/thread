@@ -14,7 +14,7 @@ sokkel();
 //Til montering: skruer, spiker, skiver
 
 //Kulisser
-
+//translate([-15,50,-100])rotate([0,0,0])cube([140,140,140],center=true);
 //kniv();
 //flaske();
 //stav();
@@ -178,7 +178,7 @@ union(){
 translate([0,0,-37])
 minkowski(){
 linear_extrude(10)
-polygon([[0,-6],[35,90],[35,110],[-25,100],[-50,-6]]);
+polygon([[0,-0],[35,90],[35,100],[-25,100],[-50,-0]]);
 cylinder(10,20,15,center=true);
 }
 translate([0,0,-19])
