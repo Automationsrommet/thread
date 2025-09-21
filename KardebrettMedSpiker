@@ -1,0 +1,70 @@
+//bonn();
+topp();
+
+module topp(){
+difference(){
+intersection(){
+handtak();
+skuffe(0);
+}
+pigger();
+translate([0,0,3])skruer();
+}
+}
+
+module bonn(){
+difference(){
+handtak();
+skuffe(0.6);
+pigger();
+translate([0,0,3])skruer();
+}
+}
+
+module handtak(){
+minkowski(){
+linear_extrude(3)
+union(){
+square([60,80],center=true);
+translate([50,0])
+//resize([40,50])
+difference(){
+circle(20);
+circle(17);
+}
+}
+sphere(5);
+}
+}
+
+module skuffe(margin){
+translate([-5,0,1])
+cube([70,79+margin,5],center=true);
+translate([-5,0,-5])
+cube([70,79+margin,10],center=true);
+for(i=[-1:2:1])
+translate([-5,i*(79+margin)/2,0])
+rotate([45,0,0])
+cube([70,4+margin,4+margin],center=true);
+}
+
+module pigger(){
+for(i=[-28:6:30])
+for(j=[-36:6:36]){
+translate([i,j,3.5])
+cube(3.4,center=true);
+translate([i,j,-20+3.5])
+cube([2.4,2.4,40],center=true);
+}
+}
+
+module skruer(){
+for(i=[-1:2:1])
+for(j=[-1:2:1])
+translate([20*i,30*j,0]){
+cylinder(10,1.5,1.5,center=true);
+translate([0,0,-7.5])
+cylinder(2.5,0,1.5,center=false);
+cylinder(5,1.0,4,center=false);
+}
+}
